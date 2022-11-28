@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcfp44lime2w3"]
+
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="1_8btt0"]
+[ext_resource type="PackedScene" uid="uid://bqjesa07ec01r" path="res://Scenes/pipes.tscn" id="2_ah0w4"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_8btt0")
+pipes = ExtResource("2_ah0w4")
+spawn_time = 1.5
