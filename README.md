@@ -9,3 +9,13 @@ Another thing to note: everything will be in the beta branch until it is ready t
 Replication of the hit game!
 
 *Game machanics: tap to flap, avoid pipes and get points.*
+
+## 2d Platformer
+The essentials to create a very fun platform game in 2d!
+
+*Game machanics: Coming Soon*
+
+## Coming Soon!
+More games are in the works! I have a lot of fun making these.
+
+*Game machanics: Coming Soon*
