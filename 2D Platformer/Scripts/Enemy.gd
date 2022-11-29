@@ -7,6 +7,9 @@ extends CharacterBody2D
 @export var Jump = 400.0
 @export var CanJump = false
 
+@export var CanFire = true
+var guntimer = 0
+
 var AbleToMove = false
 var direction = 1
 
@@ -29,6 +32,16 @@ func _physics_process(delta):
 		velocity.x = direction * Speed
 	
 	move_and_slide()
+	
+	# Handles the gun
+	var gun = get_node("Body/Gun")
+	if gun.is_colliding():
+		guntimer += delta
+		if guntimer >= 1:
+			var object = gun.get_collider()
+			object.free()
+	else:
+		guntimer = 0
 
 # Switch direction if there is no more platform. Made this way so it doesn't brick itself!
 func _on_right_sensor_body_exited(_body):

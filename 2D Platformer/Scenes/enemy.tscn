@@ -23,7 +23,7 @@ height = 100.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8soi0"]
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 5
+collision_layer = 4
 collision_mask = 5
 floor_stop_on_slope = false
 script = ExtResource("1_dhflr")
@@ -40,6 +40,9 @@ position = Vector2(9, -31)
 scale = Vector2(0.541714, 0.58)
 mesh = SubResource("SphereMesh_0cuqy")
 texture = SubResource("GradientTexture1D_bt0be")
+
+[node name="Gun" type="RayCast2D" parent="Body"]
+target_position = Vector2(200, 0)
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_qbhrk")
