@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dise62kasdugn"]
+
+[ext_resource type="PackedScene" uid="uid://b2nijcqq73w1t" path="res://Scenes/dinosaur.tscn" id="1_e6vhl"]
+[ext_resource type="PackedScene" uid="uid://cyny8gt52ay8k" path="res://Scenes/spawner.tscn" id="2_c0gn7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6uxoq"]
+size = Vector3(900, 20, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjn4u"]
+size = Vector2(900, 20)
+
+[node name="Main Scene" type="Node2D"]
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(380, 795)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+mesh = SubResource("BoxMesh_6uxoq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+shape = SubResource("RectangleShape2D_rjn4u")
+
+[node name="Dinosaur" parent="." instance=ExtResource("1_e6vhl")]
+position = Vector2(98, 702)
+
+[node name="Spawner" parent="." instance=ExtResource("2_c0gn7")]
+position = Vector2(844, 746)
+SpeedInterval = 200.0

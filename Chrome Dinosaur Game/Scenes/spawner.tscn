@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyny8gt52ay8k"]
+
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="1_kcsml"]
+[ext_resource type="PackedScene" uid="uid://b8wlfmytdf7kc" path="res://Scenes/object_01.tscn" id="2_c67c6"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_kcsml")
+Obstacles = [ExtResource("2_c67c6")]
+SpawnInterval = 1.5
+SpeedInterval = 100.0
