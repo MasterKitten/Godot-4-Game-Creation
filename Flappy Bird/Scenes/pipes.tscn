@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqjesa07ec01r"]
+
+[ext_resource type="Script" path="res://Scripts/Pipes.gd" id="1_ftkhe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgycb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5tm7l"]
+size = Vector3(80, 800, 1)
+
+[sub_resource type="Gradient" id="Gradient_duyvx"]
+offsets = PackedFloat32Array(0.613953, 0.990698, 1)
+colors = PackedColorArray(0, 0.356863, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8kscv"]
+gradient = SubResource("Gradient_duyvx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3byns"]
+
+[node name="Pipes" type="Node2D"]
+script = ExtResource("1_ftkhe")
+speed = 150.0
+despawn_speed = 10.0
+
+[node name="Pipe1" type="Area2D" parent="."]
+position = Vector2(0, -525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe1"]
+scale = Vector2(4, 39.5)
+shape = SubResource("RectangleShape2D_hgycb")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Pipe1"]
+mesh = SubResource("BoxMesh_5tm7l")
+texture = SubResource("GradientTexture1D_8kscv")
+
+[node name="Pipe2" type="Area2D" parent="."]
+position = Vector2(0, 525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe2"]
+scale = Vector2(4, 39.5)
+shape = SubResource("RectangleShape2D_hgycb")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Pipe2"]
+mesh = SubResource("BoxMesh_5tm7l")
+texture = SubResource("GradientTexture1D_8kscv")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(3.5, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3byns")
+
+[connection signal="body_entered" from="Pipe1" to="." method="_on_pipe_body_entered"]
+[connection signal="body_entered" from="Pipe2" to="." method="_on_pipe_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_body_entered"]
