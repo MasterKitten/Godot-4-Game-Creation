@@ -1,6 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://di48m6c3e0g4o"]
+[gd_scene load_steps=7 format=3 uid="uid://di48m6c3e0g4o"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_mrb2h"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r7sv0"]
+radius = 20.0
+height = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_paagd"]
+radius = 21.0
+height = 100.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_n0706"]
+radius = 12.0
+height = 25.0
+
+[sub_resource type="Gradient" id="Gradient_6tewg"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dk3ck"]
+gradient = SubResource("Gradient_6tewg")
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_mrb2h")
+
+[node name="Body" type="MeshInstance2D" parent="."]
+mesh = SubResource("CapsuleMesh_r7sv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_paagd")
+
+[node name="Eye" type="MeshInstance2D" parent="."]
+position = Vector2(9, -31)
+scale = Vector2(0.541714, 0.58)
+mesh = SubResource("SphereMesh_n0706")
+texture = SubResource("GradientTexture1D_dk3ck")
