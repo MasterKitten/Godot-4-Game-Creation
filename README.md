@@ -13,7 +13,12 @@ Replication of the hit game!
 ## 2d Platformer
 The essentials to create a very fun platform game in 2d!
 
-*Game machanics: Coming Soon*
+*Game machanics: Jump, shoot, and roam! An enemy that is smart who can shoot.*
+
+## Chrome Dinosaur Game!
+Replication of the hit web game!
+
+*Game machanics: Jump over and duck under objects that come your way!*
 
 ## Coming Soon!
 More games are in the works! I have a lot of fun making these.
