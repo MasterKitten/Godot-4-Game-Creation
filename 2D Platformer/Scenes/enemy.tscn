@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqwlkuo8p11wd"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_dhflr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jju50"]
+radius = 20.0
+height = 100.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_0cuqy"]
+radius = 12.0
+height = 25.0
+
+[sub_resource type="Gradient" id="Gradient_6tewg"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bt0be"]
+gradient = SubResource("Gradient_6tewg")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbhrk"]
+radius = 21.0
+height = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8soi0"]
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+floor_stop_on_slope = false
+script = ExtResource("1_dhflr")
+Speed = 200.0
+Jump = 300.0
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Body" type="MeshInstance2D" parent="Body"]
+mesh = SubResource("CapsuleMesh_jju50")
+
+[node name="Eye" type="MeshInstance2D" parent="Body"]
+position = Vector2(9, -31)
+scale = Vector2(0.541714, 0.58)
+mesh = SubResource("SphereMesh_0cuqy")
+texture = SubResource("GradientTexture1D_bt0be")
+
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qbhrk")
+
+[node name="Right Sensor" type="Area2D" parent="."]
+position = Vector2(6, 15)
+disable_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Sensor"]
+position = Vector2(32, 47)
+shape = SubResource("RectangleShape2D_8soi0")
+
+[node name="Left Sensor" type="Area2D" parent="."]
+position = Vector2(-69, 16)
+disable_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Sensor"]
+position = Vector2(32, 47)
+shape = SubResource("RectangleShape2D_8soi0")
+
+[connection signal="body_exited" from="Right Sensor" to="." method="_on_right_sensor_body_exited"]
+[connection signal="body_exited" from="Left Sensor" to="." method="_on_left_sensor_body_exited"]

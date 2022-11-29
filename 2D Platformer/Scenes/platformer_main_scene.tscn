@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://u450qs44ujqy"]
+[gd_scene load_steps=5 format=3 uid="uid://u450qs44ujqy"]
 
 [ext_resource type="PackedScene" uid="uid://di48m6c3e0g4o" path="res://Scenes/player.tscn" id="1_qxh2q"]
+[ext_resource type="PackedScene" uid="uid://bqwlkuo8p11wd" path="res://Scenes/enemy.tscn" id="2_1gmsu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wfer2"]
 size = Vector3(700, 50, 50)
@@ -11,15 +12,43 @@ size = Vector2(701, 50)
 [node name="Platformer Main Scene" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_qxh2q")]
-position = Vector2(187, 377)
+position = Vector2(103, 487)
+
+[node name="Enemy" parent="." instance=ExtResource("2_1gmsu")]
+position = Vector2(382, 576)
 
 [node name="Platform" type="StaticBody2D" parent="."]
 position = Vector2(342, 402)
+scale = Vector2(0.32, 1)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
 position = Vector2(9, 346)
 mesh = SubResource("BoxMesh_wfer2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(8.5, 346)
+shape = SubResource("RectangleShape2D_fwnbp")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(559, 452)
+scale = Vector2(0.32, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2"]
+position = Vector2(9, 346)
+mesh = SubResource("BoxMesh_wfer2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(8.5, 346)
+shape = SubResource("RectangleShape2D_fwnbp")
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(105, 481)
+scale = Vector2(0.32, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform3"]
+position = Vector2(9, 346)
+mesh = SubResource("BoxMesh_wfer2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
 position = Vector2(8.5, 346)
 shape = SubResource("RectangleShape2D_fwnbp")
