@@ -1,17 +1,17 @@
 extends Node2D
 
 @export var speed = 0.0
+# Despawns the pipe. Not needed for the VULCAN renderer, but it works.
 @export var despawn_speed = 0.0
 var timer = 0.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	timer += delta
 	self.translate(Vector2(-speed * delta, 0))
 	if timer >= despawn_speed:
 		self.free()
 
-# Murder system
+# Murder system for the bird
 func _on_pipe_body_entered(body):
 	body.free()
 
