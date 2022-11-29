@@ -10,6 +10,11 @@ func _process(_delta):
 	if get_node_or_null(Bird) == null:
 		get_node("Game Over").set("visible", true)
 		get_node("Game Over/Label").set("text", "GAME OVER!\nScore: " + str(get_node("Spawner").get("Value")))
+	
+	#Handles Background scrolling animation.
+	var AnimationNoded = get_node("ScrollPlayer")
+	if !AnimationNoded.is_playing():
+		AnimationNoded.play("Scroll")
 
 func _on_retry_pressed():
 	get_tree().change_scene_to_file("res://Scenes/flappy_bird_main.tscn")

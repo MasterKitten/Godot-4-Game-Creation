@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqjesa07ec01r"]
+[gd_scene load_steps=9 format=3 uid="uid://30hjjdx5fxfl"]
 
 [ext_resource type="Script" path="res://Scripts/Pipes.gd" id="1_ftkhe"]
+[ext_resource type="AudioStream" uid="uid://djwrb6xt0c5uj" path="res://Sounds/death.wav" id="2_h74cd"]
+[ext_resource type="AudioStream" uid="uid://dd6424gjqplln" path="res://Sounds/ScoreSound.wav" id="3_4ls7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgycb"]
 
@@ -47,8 +49,13 @@ texture = SubResource("GradientTexture1D_8kscv")
 scale = Vector2(3.5, 11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3byns")
+
+[node name="Die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_h74cd")
+
+[node name="Score" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4ls7r")
 
 [connection signal="body_entered" from="Pipe1" to="." method="_on_pipe_body_entered"]
 [connection signal="body_entered" from="Pipe2" to="." method="_on_pipe_body_entered"]

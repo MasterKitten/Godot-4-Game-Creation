@@ -7,4 +7,5 @@ func _process(_delta):
 	if Input.get_action_raw_strength("flap") && self.linear_velocity.y >= -100:
 		self.linear_velocity.y = -speed
 		get_node("AnimationPlayer").set("current_animation", "[stop]")
-		get_node("AnimationPlayer").set("current_animation", "Flap")
+		get_node("AnimationPlayer").play("Flap")
+		get_node("Flap").play()

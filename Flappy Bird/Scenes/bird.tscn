@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7hr8begtkgo"]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://Scripts/bird.gd" id="1_4amiv"]
-[ext_resource type="Texture2D" uid="uid://humr70bu4w8y" path="res://Bird.png" id="2_8csjj"]
+[ext_resource type="Texture2D" uid="uid://humr70bu4w8y" path="res://Images/Bird.png" id="2_8csjj"]
+[ext_resource type="AudioStream" uid="uid://n24wcerweh3k" path="res://Sounds/jump.wav" id="3_3iuxj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fxs2c"]
 
@@ -60,3 +61,6 @@ region_rect = Rect2(0, 0, 100, 100)
 libraries = {
 "": SubResource("AnimationLibrary_0fsa6")
 }
+
+[node name="Flap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3iuxj")
