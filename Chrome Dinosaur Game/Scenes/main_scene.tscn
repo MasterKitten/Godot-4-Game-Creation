@@ -12,7 +12,7 @@ size = Vector2(900, 20)
 [node name="Main Scene" type="Node2D"]
 
 [node name="Platform" type="StaticBody2D" parent="."]
-position = Vector2(380, 795)
+position = Vector2(380, 800)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
 mesh = SubResource("BoxMesh_6uxoq")
@@ -21,8 +21,8 @@ mesh = SubResource("BoxMesh_6uxoq")
 shape = SubResource("RectangleShape2D_rjn4u")
 
 [node name="Dinosaur" parent="." instance=ExtResource("1_e6vhl")]
-position = Vector2(98, 702)
+position = Vector2(98, 751)
 
 [node name="Spawner" parent="." instance=ExtResource("2_c0gn7")]
-position = Vector2(844, 746)
+position = Vector2(900, 780)
 SpeedInterval = 200.0

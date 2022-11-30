@@ -1,26 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8wlfmytdf7kc"]
+[gd_scene load_steps=4 format=3 uid="uid://b8wlfmytdf7kc"]
 
 [ext_resource type="Script" path="res://Scripts/object.gd" id="1_sqdv3"]
+[ext_resource type="Texture2D" uid="uid://cijrp63gv1x37" path="res://Images/Cactus.png" id="2_qomot"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_526nh"]
-size = Vector3(20, 20, 1)
-
-[sub_resource type="Gradient" id="Gradient_lsjly"]
-colors = PackedColorArray(0, 0, 0, 1, 0.0823529, 1, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xetqs"]
-gradient = SubResource("Gradient_lsjly")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhga7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxba6"]
+size = Vector2(43, 80)
 
 [node name="Object01" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_sqdv3")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-mesh = SubResource("BoxMesh_526nh")
-texture = SubResource("GradientTexture1D_xetqs")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xhga7")
+position = Vector2(-1.5, -23)
+shape = SubResource("RectangleShape2D_dxba6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -23)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("2_qomot")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
