@@ -92,3 +92,32 @@ position = Vector2(900, 780)
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Score: "
+
+[node name="Game Over!" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Game Over!"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 213.0
+offset_top = 152.0
+offset_right = 310.0
+offset_bottom = 178.0
+scale = Vector2(3, 3)
+text = "GAME OVER!
+Score:"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Game Over!"]
+layout_mode = 0
+offset_left = 307.0
+offset_top = 367.0
+offset_right = 394.0
+offset_bottom = 398.0
+text = "Play again"
+
+[connection signal="pressed" from="Game Over!/Button" to="." method="_on_button_pressed"]
