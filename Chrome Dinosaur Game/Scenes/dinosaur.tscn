@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b81w6isxfwam7"]
+
+[ext_resource type="Script" path="res://Scripts/Dinosaur.gd" id="1_djgw3"]
+[ext_resource type="Texture2D" uid="uid://diglpk0vdrngo" path="res://Images/Dinosaur01.png" id="2_bhx4u"]
+[ext_resource type="Texture2D" uid="uid://bci76ih42bjnr" path="res://Images/Dinosaur02.png" id="3_65st4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1iwb"]
+size = Vector2(44, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bku31"]
+animations = [{
+"frames": [ExtResource("2_bhx4u"), ExtResource("3_65st4")],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Dinosaur" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_djgw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_a1iwb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-35, 33)
+scale = Vector2(0.5, 0.5)
+frames = SubResource("SpriteFrames_bku31")
+offset = Vector2(71, -62)

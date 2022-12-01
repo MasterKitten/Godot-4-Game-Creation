@@ -13,8 +13,10 @@ func _process(delta):
 
 # Murder system for the bird
 func _on_pipe_body_entered(body):
+	get_node("Die").play()
 	body.free()
 
 # This function is used to count the value of how many times you did a thing!
 func _on_area_body_entered(_body):
+	get_node("Score").play()
 	get_parent().set("Value", get_parent().get("Value") + 1)

@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://dise62kasdugn"]
+
+[ext_resource type="PackedScene" uid="uid://b81w6isxfwam7" path="res://Scenes/dinosaur.tscn" id="1_e6vhl"]
+[ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_hnpt7"]
+[ext_resource type="PackedScene" uid="uid://b0w1p332o2w2g" path="res://Scenes/sprites.tscn" id="1_s5hci"]
+[ext_resource type="PackedScene" uid="uid://cyny8gt52ay8k" path="res://Scenes/spawner.tscn" id="2_c0gn7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6uxoq"]
+size = Vector3(900, 20, 1)
+
+[sub_resource type="Gradient" id="Gradient_ul6ow"]
+colors = PackedColorArray(0.301961, 0.301961, 0.301961, 1, 0.301961, 0.301961, 0.301961, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5wb2a"]
+gradient = SubResource("Gradient_ul6ow")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjn4u"]
+size = Vector2(900, 20)
+
+[sub_resource type="Animation" id="Animation_1t3rk"]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-896, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_05k2p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-896, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xk73x"]
+_data = {
+"Move": SubResource("Animation_1t3rk"),
+"RESET": SubResource("Animation_05k2p")
+}
+
+[node name="Main Scene" type="Node2D"]
+script = ExtResource("1_hnpt7")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(380, 800)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+mesh = SubResource("BoxMesh_6uxoq")
+texture = SubResource("GradientTexture1D_5wb2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+visible = false
+shape = SubResource("RectangleShape2D_rjn4u")
+
+[node name="Graphics" type="Node2D" parent="Platform"]
+position = Vector2(-896, 0)
+
+[node name="Sprites" parent="Platform/Graphics" instance=ExtResource("1_s5hci")]
+position = Vector2(0, -20)
+
+[node name="Sprites2" parent="Platform/Graphics" instance=ExtResource("1_s5hci")]
+position = Vector2(896, -22)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
+playback_speed = 0.23
+libraries = {
+"": SubResource("AnimationLibrary_xk73x")
+}
+
+[node name="Dinosaur" parent="." instance=ExtResource("1_e6vhl")]
+position = Vector2(98, 751)
+
+[node name="Spawner" parent="." instance=ExtResource("2_c0gn7")]
+position = Vector2(900, 780)
+
+[node name="Points" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score: "

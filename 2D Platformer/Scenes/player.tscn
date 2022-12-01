@@ -1,6 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://di48m6c3e0g4o"]
+[gd_scene load_steps=7 format=3 uid="uid://di48m6c3e0g4o"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_mrb2h"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_paagd"]
+radius = 21.0
+height = 100.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r7sv0"]
+radius = 20.0
+height = 100.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_n0706"]
+radius = 12.0
+height = 25.0
+
+[sub_resource type="Gradient" id="Gradient_xa5df"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dk3ck"]
+gradient = SubResource("Gradient_xa5df")
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_mrb2h")
+
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_paagd")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Body" type="MeshInstance2D" parent="Body"]
+mesh = SubResource("CapsuleMesh_r7sv0")
+
+[node name="Eye" type="MeshInstance2D" parent="Body"]
+position = Vector2(9, -31)
+scale = Vector2(0.541714, 0.58)
+mesh = SubResource("SphereMesh_n0706")
+texture = SubResource("GradientTexture1D_dk3ck")
+
+[node name="Gun" type="RayCast2D" parent="Body"]
+position = Vector2(-1, 0)
+target_position = Vector2(200, 0)
+collision_mask = 4
+collide_with_areas = true

@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyny8gt52ay8k"]
+
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="1_kcsml"]
+[ext_resource type="PackedScene" uid="uid://b8wlfmytdf7kc" path="res://Scenes/object_01.tscn" id="2_c67c6"]
+[ext_resource type="PackedScene" uid="uid://c0y8fqr5crl3s" path="res://Scenes/object_02.tscn" id="3_gddyn"]
+[ext_resource type="PackedScene" uid="uid://cvkmhwjmm13dt" path="res://Scenes/object_03.tscn" id="4_f31h5"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_kcsml")
+Obstacles = [ExtResource("2_c67c6"), ExtResource("3_gddyn"), ExtResource("4_f31h5")]
+SpawnInterval = 1.5
+SpeedInterval = 100.0

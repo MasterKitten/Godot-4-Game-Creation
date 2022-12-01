@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://humr70bu4w8y"
-path="res://.godot/imported/Bird.png-e09286e69eaef14ca7407448a9f47941.ctex"
+uid="uid://bci76ih42bjnr"
+path="res://.godot/imported/Dinosaur02.png-047f49242f7828cd44b5babd5511903d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bird.png"
-dest_files=["res://.godot/imported/Bird.png-e09286e69eaef14ca7407448a9f47941.ctex"]
+source_file="res://Images/Dinosaur02.png"
+dest_files=["res://.godot/imported/Dinosaur02.png-047f49242f7828cd44b5babd5511903d.ctex"]
 
 [params]
 

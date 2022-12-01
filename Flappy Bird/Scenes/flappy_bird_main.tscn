@@ -1,12 +1,78 @@
-[gd_scene load_steps=4 format=3 uid="uid://862v7rua61jd"]
+[gd_scene load_steps=9 format=3 uid="uid://862v7rua61jd"]
 
 [ext_resource type="Script" path="res://Scripts/MainStuff.gd" id="1_bvk2k"]
-[ext_resource type="PackedScene" uid="uid://c7hr8begtkgo" path="res://Scenes/bird.tscn" id="1_riimd"]
+[ext_resource type="PackedScene" path="res://Scenes/bird.tscn" id="1_riimd"]
 [ext_resource type="PackedScene" uid="uid://dcfp44lime2w3" path="res://Scenes/spawner.tscn" id="2_n4bxn"]
+[ext_resource type="Texture2D" uid="uid://dmupb0nathviv" path="res://Images/Background.png" id="2_wufym"]
+[ext_resource type="PackedScene" uid="uid://damyvcam00lqp" path="res://Scenes/barrier.tscn" id="5_t6cvh"]
+
+[sub_resource type="Animation" id="Animation_neltj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4ssn8"]
+resource_name = "Scroll"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1495, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u6icm"]
+_data = {
+"RESET": SubResource("Animation_neltj"),
+"Scroll": SubResource("Animation_4ssn8")
+}
 
 [node name="Flappy Bird Main" type="Node2D"]
 script = ExtResource("1_bvk2k")
 Bird = NodePath("Bird")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2943.0
+offset_bottom = 794.0
+
+[node name="Image1" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 1485.0
+offset_bottom = 811.6
+texture = ExtResource("2_wufym")
+
+[node name="Image2" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 1485.0
+offset_top = -20.0
+offset_right = 2970.0
+offset_bottom = 811.6
+texture = ExtResource("2_wufym")
+
+[node name="ScrollPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.25
+libraries = {
+"": SubResource("AnimationLibrary_u6icm")
+}
 
 [node name="Bird" parent="." instance=ExtResource("1_riimd")]
 position = Vector2(88, 329)
@@ -48,5 +114,11 @@ scale = Vector2(2, 2)
 text = "GAME OVER!
 Score:"
 horizontal_alignment = 1
+
+[node name="Barrier" parent="." instance=ExtResource("5_t6cvh")]
+position = Vector2(-155, 826)
+
+[node name="Barrier2" parent="." instance=ExtResource("5_t6cvh")]
+position = Vector2(-171, -28)
 
 [connection signal="pressed" from="Game Over/Retry" to="." method="_on_retry_pressed"]
