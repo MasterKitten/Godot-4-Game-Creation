@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0w1p332o2w2g"]
+
+[ext_resource type="Texture2D" uid="uid://crkr3kb4b8564" path="res://Images/Ground.png" id="1_rw45v"]
+
+[node name="Sprites" type="Node2D"]
+position = Vector2(0, -18)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rw45v")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(128, 0)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("1_rw45v")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-128, 0)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("1_rw45v")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-256, 0)
+rotation = 3.14159
+scale = Vector2(-1, -1)
+texture = ExtResource("1_rw45v")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(-384, 0)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("1_rw45v")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(384, -2)
+rotation = 3.14159
+scale = Vector2(-1, -1)
+texture = ExtResource("1_rw45v")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(256, -2)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("1_rw45v")
